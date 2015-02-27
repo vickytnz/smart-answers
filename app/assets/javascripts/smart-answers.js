@@ -5,7 +5,8 @@ function browserSupportsHtml5HistoryApi() {
 $(document).ready(function() {
   //_gaq.push(['_trackEvent', 'Citizen-Format-Smartanswer', 'Load']);
   if(browserSupportsHtml5HistoryApi()) {
-    var formSelector = ".current form";
+    var $smartAnswer = $('.js-smart-answer'),
+        formSelector = ".current form";
 
     initializeHistory();
 
@@ -14,31 +15,31 @@ $(document).ready(function() {
       return slugArray.splice(3, slugArray.length).join('/');
     };
 
-    // events
-    // get new questions on submit
-    $(formSelector).live('submit', function(event) {
+    $smartAnswer.on('submit', '.current form', getNewQuestions);
+    $smartAnswer.on('click', '.start-right', startAgain);
+    $smartAnswer.on('click', '.link-right a', changeAnswer);
+
+    function getNewQuestions(event) {
       $('input[type=submit]', this).attr('disabled', 'disabled');
       var form = $(this);
       var postData = form.serializeArray();
       reloadQuestions(form.attr('action'), postData);
       event.preventDefault();
       return false;
-    });
+    }
 
-    // Track when a user clicks on 'Start again' link
-    $('.start-right').live('click', function() {
+    function startAgain() {
       window._gaq && window._gaq.push(['_trackEvent', 'MS_smart_answer', getCurrentPosition(), 'Start again']);
       reloadQuestions($(this).attr('href'));
       return false;
-    });
+    }
 
-    // Track when a user clicks on a 'Change Answer' link
-    $('.link-right a').live('click', function() {
+    function changeAnswer() {
       var href = $(this).attr('href');
       window._gaq && window._gaq.push(['_trackEvent', 'MS_smart_answer', href, 'Change Answer']);
       reloadQuestions(href);
       return false;
-    });
+    }
 
     // manage next/back by tracking popstate event
     window.onpopstate = function (event) {
