@@ -4,6 +4,8 @@
 - american-samoa
 - anguilla
 - argentina
+- algeria
+- angola
 - armenia
 - aruba
 - australia
@@ -25,13 +27,21 @@
 - colombia
 - costa-rica
 - cote-d-ivoire
+- bahrain
+- bolivia
+- bosnia-and-herzegovina
+- bulgaria
+- chile
 - croatia
 - cyprus
 - czech-republic
+- cuba
+- democratic-republic-of-congo
 - denmark
 - dominican-republic
 - ecuador
 - egypt
+- el-salvador
 - estonia
 - finland
 - france
@@ -40,10 +50,13 @@
 - germany
 - georgia
 - gibraltar
+- ethiopia
 - greece
 - guadeloupe
 - guatemala
 - hong-kong
+- honduras
+- hungary
 - iceland
 - india
 - indonesia
@@ -69,6 +82,7 @@
 - mayotte
 - mexico
 - monaco
+- moldova
 - montenegro
 - morocco
 - netherlands
@@ -81,6 +95,8 @@
 - paraguay
 - peru
 - philippines
+- nepal
+- panama
 - poland
 - portugal
 - qatar
@@ -103,10 +119,12 @@
 - st-maarten
 - st-martin
 - st-pierre-and-miquelon
+- sudan
 - sweden
 - switzerland
 - syria
 - thailand
+- tajikistan
 - tunisia
 - turkey
 - turkmenistan
@@ -117,6 +135,7 @@
 - wallis-and-futuna
 - yemen
 - zimbabwe
+- venezuela
 :legal_residency?:
 - uk
 - ceremony_country
