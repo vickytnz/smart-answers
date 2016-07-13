@@ -5,7 +5,7 @@
 
   <% case calculator.child_or_adult %>
   <% when 'adult' %>
-    | Passport type | Passport fee | 
+    | Passport type | Passport fee |
     |---------------|--------------|
     | Adult standard 32-page passport | <%= number_to_currency(calculator.find_passport_fee('adult_standard'), precision: 2) %> |
     | Adult jumbo 48-page passport | <%= number_to_currency(calculator.find_passport_fee('adult_jumbo'), precision: 2) %> |
@@ -17,7 +17,7 @@
 
   You must pay in cash. In addition to the passport fee you’ll need to pay any local administration fees which apply from the office where you make your application.
 <% else %>
-  You’ll have to pay a fee for your passport and a courier fee of <%= number_to_currency(calculator.courier_fee, precision: 2) %>.
+  <%= render partial: 'cost/fee_information.govspeak.erb', locals: { calculator: calculator } %>
 
   <%= render partial: 'cost/courier_fee_information.govspeak.erb', locals: { calculator: calculator } %>
 
