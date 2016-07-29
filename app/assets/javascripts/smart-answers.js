@@ -187,4 +187,18 @@ function linkToTemplatesOnGithub() {
     element.attr('style', 'border: 3px solid deeppink; padding: 10px; margin: 3px');
     element.removeAttr('data-debug-template-path');
   });
+  $('*[data-debug-partial-template-path]').each(function() {
+    var element = $(this);
+    var path = element.data('debug-partial-template-path');
+    var filename = path.split('/').pop();
+    var host = 'https://github.com';
+    var organisation = 'alphagov';
+    var repository = 'smart-answers'
+    var branch = 'deployed-to-production';
+    var url = [host, organisation, repository, 'blob', branch, path].join('/');
+    var anchor = $('<a>Partial template on GitHub</a>').attr('href', url).attr('style', 'color: hotpink;').attr('title', filename);
+    element.prepend(anchor);
+    element.attr('style', 'border: 3px dotted hotpink; padding: 10px; margin: 3px');
+    element.removeAttr('data-debug-partial-template-path');
+  });
 };
