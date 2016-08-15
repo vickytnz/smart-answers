@@ -1,4 +1,4 @@
 <label for="response">
-  <%= question.label %>
+  <%= question.label.present? ? question.label : 'Country' %>
   <%= select_tag "response", options_from_collection_for_select(question.options, :value, :label, prefill_value_for(question)) %>
 </label>

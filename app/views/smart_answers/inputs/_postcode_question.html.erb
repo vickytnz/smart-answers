@@ -1,4 +1,4 @@
 <label for="response">
-  <%= question.label %>
+  <%= question.label.present? ? question.label : 'Postcode' %>
   <%= text_field_tag("response", prefill_value_for(question)) %>
 </label>

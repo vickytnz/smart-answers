@@ -1,6 +1,6 @@
 <fieldset>
   <label for="response_amount">
-    <%= question.label.present? ? question.label : '£' %>
+    <%= question.label.present? ? question.label : 'Salary (in £)' %>
     <%= text_field_tag("response[amount]", nil, size: 5, value: prefill_value_for(question, :amount)) %>
   </label>
   <label for="response_period">
