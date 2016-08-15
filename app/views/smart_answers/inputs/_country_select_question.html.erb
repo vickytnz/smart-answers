@@ -1,1 +1,4 @@
-<%= select_tag "response", options_from_collection_for_select(question.options, :value, :label, prefill_value_for(question)) %>
+<label for="response">
+  <%= question.label %>
+  <%= select_tag "response", options_from_collection_for_select(question.options, :value, :label, prefill_value_for(question)) %>
+</label>

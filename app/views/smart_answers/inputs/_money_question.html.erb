@@ -1,1 +1,5 @@
-<label for="response">&pound; <%= text_field_tag('response', nil, size: 5, value: prefill_value_for(question)) %><%= question.suffix_label %></label>
+<label for="response">
+  <%= question.label.present? ? question.label : '£' %>
+  <%= text_field_tag('response', nil, size: 5, value: prefill_value_for(question)) %>
+  <%= question.suffix_label %>
+</label>

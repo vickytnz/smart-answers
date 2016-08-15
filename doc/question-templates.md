@@ -26,7 +26,7 @@ The templates can contain content for any of the following keys:
 
 ### `label(text)`
 
-* Valid for value questions
+* Valid for value, country, money, salary and postcode questions
 * `text` argument is a String
 * Used as a label (preceding the input control)
 
