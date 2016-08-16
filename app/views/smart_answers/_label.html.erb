@@ -1,0 +1,13 @@
+<span class="label" data-test="question">
+  <%= question.title %>
+</span>
+
+<% if question.hint.present? %>
+  <span class="hint"><%= question.hint %></span>
+<% end %>
+
+<% if question.error %>
+  <span class="error-message" id="current-error" role="alert">
+    <%= question.error %>
+  </span>
+<% end %>

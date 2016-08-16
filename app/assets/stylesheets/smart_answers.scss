@@ -120,6 +120,7 @@ $is-ie: false !default;
   .hint {
     @include core-16;
     display: block;
+    margin: 0 0 10px;
   }
 
   .start-again {
@@ -254,6 +255,26 @@ $is-ie: false !default;
     padding: 1.5em 0 1em 0;
     margin: 1.5em 0 0 0;
 
+    fieldset,
+    legend {
+      padding: 0;
+      margin: 0;
+    }
+
+    .label {
+      @include bold-19;
+      display: block;
+      margin: 0 0 10px;
+    }
+
+    .labelish {
+      margin-right: 0.5em;
+    }
+
+    input {
+      margin-left: 0;
+    }
+
     .question {
       margin: .5em 0 2em 0;
     }
@@ -276,7 +297,7 @@ $is-ie: false !default;
 
     ul {
       label {
-        margin-left: 0.25em;
+        margin: 0 0.25em 10px 0;
       }
 
       select {
@@ -288,10 +309,11 @@ $is-ie: false !default;
         @extend %contain-floats;
         list-style: none;
         padding: 0; /* this aligns optional questions with gutter */
+        margin: 0;
 
         li {
           line-height: 1.5em;
-          margin: 0.5em 0;
+          margin: 0;
         }
       }
 
@@ -362,8 +384,10 @@ $is-ie: false !default;
   }
 
   .error-message {
-    margin-top: 0;
-    color:#B01117;
+    color: #B01117;
+    @include core-19;
+    display: block;
+    margin-bottom: 10px;
   }
 
   /*

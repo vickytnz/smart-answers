@@ -1,10 +1,15 @@
-<ul class="options">
-  <% question.options.each.with_index do |option, i| %>
-    <li>
-      <label for="response_<%= i %>" class="selectable">
-        <%= check_box_tag "response[]", option.value, prefill_value_includes?(question, option.value), id: "response_#{i}" %>
-        <%= option.label %>
-      </label>
-    </li>
- <% end %>
-</ul>
+<fieldset>
+  <legend>
+    <%= render partial: "smart_answers/label", locals: { question: question } %>
+  </legend>
+  <ul class="options">
+    <% question.options.each.with_index do |option, i| %>
+      <li>
+        <label for="response_<%= i %>" class="selectable">
+          <%= check_box_tag "response[]", option.value, prefill_value_includes?(question, option.value), id: "response_#{i}" %>
+          <%= option.label %>
+        </label>
+      </li>
+   <% end %>
+  </ul>
+</fieldset>
