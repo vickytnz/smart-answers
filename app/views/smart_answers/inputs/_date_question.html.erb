@@ -1,17 +1,24 @@
 <fieldset>
+  <legend>
+    <%= render partial: "smart_answers/label", locals: { question: question } %>
+  </legend>
+
   <% unless question.default_day %>
-    <label for="response_day">Day
-      <%= select_day default_for_date(prefill_value_for(question, :day)), prefix: "response", :prompt => '' %>
+    <label for="response_day">
+      Day
     </label>
+    <%= select_day default_for_date(prefill_value_for(question, :day)), prefix: "response", :prompt => '' %>
   <% end %>
   <% unless question.default_month %>
-    <label for="response_month">Month
-      <%= select_month default_for_date(prefill_value_for(question, :month)), prefix: "response", prompt: '' %>
+    <label for="response_month">
+      Month
     </label>
+    <%= select_month default_for_date(prefill_value_for(question, :month)), prefix: "response", prompt: '' %>
   <% end %>
   <% unless question.default_year %>
-    <label for="response_year">Year
-      <%= select_year default_for_date(prefill_value_for(question, :year)), prefix: "response", prompt: '', :start_year => question.start_date.year, :end_year => question.end_date.year %>
+    <label for="response_year">
+      Year
     </label>
+    <%= select_year default_for_date(prefill_value_for(question, :year)), prefix: "response", prompt: '', :start_year => question.start_date.year, :end_year => question.end_date.year %>
   <% end %>
 </fieldset>

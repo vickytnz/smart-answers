@@ -1,1 +1,6 @@
-<label for="response">&pound; <%= text_field_tag('response', nil, size: 5, value: prefill_value_for(question)) %><%= question.suffix_label %></label>
+<label for="response">
+  <%= render partial: "smart_answers/label", locals: { question: question } %>
+</label>
+&pound;
+<%= text_field_tag('response', nil, size: 5, value: prefill_value_for(question)) %>
+<%= question.suffix_label %>
