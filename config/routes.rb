@@ -4,6 +4,12 @@ SmartAnswers::Application.routes.draw do
   get 'healthcheck', to: proc { [200, {}, ['']] }
 
   constraints id: /[a-z0-9-]+/i do
+    get '/:id(/:started(/*responses))/:govspeak',
+      to: 'smart_answers#show',
+      as: :smart_answer_txt,
+      format: "text",
+      constraints: { govspeak: /govspeak/ }
+
     get '/:id/visualise(.:format)', to: 'smart_answers#visualise', as: :visualise
 
     get '/:id(/:started(/*responses)).:format',
