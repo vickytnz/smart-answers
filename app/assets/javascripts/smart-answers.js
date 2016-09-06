@@ -7,7 +7,7 @@ function browserSupportsHtml5HistoryApi() {
 }
 
 $(document).ready(function() {
-  if(browserSupportsHtml5HistoryApi() && SmartAnswer.AJAX_ENABLED) {
+  if(browserSupportsHtml5HistoryApi() && SmartAnswer.AJAX_ENABLED && false) {
     var formSelector = ".current form";
 
     initializeHistory();

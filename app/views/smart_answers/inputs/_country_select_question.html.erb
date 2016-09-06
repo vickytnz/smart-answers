@@ -1,4 +1,6 @@
-<label for="response">
-  <%= render partial: "smart_answers/label", locals: { question: question } %>
-</label>
-<%= select_tag "response", options_from_collection_for_select(question.options, :value, :label, prefill_value_for(question)) %>
+<div class="form-group">
+  <label for="response" class="form-label"><!-- form-label-bold -->
+    <%= render partial: "smart_answers/label", locals: { question: question } %>
+  </label>
+  <%= select_tag "response", options_from_collection_for_select(question.options, :value, :label, prefill_value_for(question)), class: "form-control" %>
+</div>

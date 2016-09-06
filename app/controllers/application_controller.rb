@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   rescue_from GdsApi::TimedOutException, with: :error_503
   rescue_from ActionController::UnknownFormat, with: :error_404
 
-  slimmer_template 'wrapper'
+  slimmer_template 'header_footer_only'
 
 protected
 

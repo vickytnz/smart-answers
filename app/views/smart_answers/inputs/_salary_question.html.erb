@@ -3,12 +3,18 @@
     <%= render partial: "smart_answers/label", locals: { question: question } %>
   </legend>
 
-  <label for="response_amount">
-    &pound; <%= text_field_tag("response[amount]", nil, size: 5, value: prefill_value_for(question, :amount)) %>
-  </label>
-  <label for="response_period">
-    per <select name="response[period]">
+  <div class="form-group">
+    <label for="response_amount" class="form-label">
+      &pound;
+    </label>
+    <%= text_field_tag("response[amount]", nil, size: 5, value: prefill_value_for(question, :amount), class: "form-control") %>
+
+    <label for="response_period" class="form-label">
+      per
+    </label>
+    <select name="response[period]">
+      <!-- TODO: how to add class?!? -->
       <%= options_for_select %w{week month year}, prefill_value_for(question, :period) %>
     </select>
-  </label>
+  </div>
 </fieldset>

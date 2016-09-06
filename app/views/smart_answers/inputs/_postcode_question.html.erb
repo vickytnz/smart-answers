@@ -1,4 +1,6 @@
-<label for="response">
-  <%= render partial: "smart_answers/label", locals: { question: question } %>
-</label>
-<%= text_field_tag("response", prefill_value_for(question)) %>
+<div class="form-group">
+  <label for="response" class="form-label">
+    <%= render partial: "smart_answers/label", locals: { question: question } %>
+  </label>
+  <%= text_field_tag("response", prefill_value_for(question), class: "form-control") %>
+</div>

@@ -1,15 +1,17 @@
 <fieldset>
   <legend>
+<!--
+    <span class="form-label-bold"></span>
+-->
     <%= render partial: "smart_answers/label", locals: { question: question } %>
   </legend>
-  <ul class="options">
+
+  <div class="form-group">
     <% question.options.each.with_index do |option, i| %>
-      <li>
-        <label for="response_<%= i %>" class="selectable">
-          <%= check_box_tag "response[]", option.value, prefill_value_includes?(question, option.value), id: "response_#{i}" %>
-          <%= option.label %>
-        </label>
-      </li>
-   <% end %>
-  </ul>
+      <label for="response_<%= i %>" class="block-label">
+        <%= check_box_tag "response[]", option.value, prefill_value_includes?(question, option.value), id: "response_#{i}" %>
+        <%= option.label %>
+      </label>
+    <% end %>
+  </div>
 </fieldset>

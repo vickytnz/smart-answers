@@ -1,9 +1,12 @@
-<span class="label" data-test="question">
+<!--
+    <span class="form-label-bold"></span>
+-->
+<span class="form-label-bold" data-test="question">
   <%= question.title %>
 </span>
 
 <% if question.hint.present? %>
-  <span class="hint"><%= question.hint %></span>
+  <span class="form-hint"><%= question.hint %></span>
 <% end %>
 
 <% if question.error %>
