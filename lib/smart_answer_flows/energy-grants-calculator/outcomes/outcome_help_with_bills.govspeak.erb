@@ -13,9 +13,7 @@
 <% end %>
 
 <% content_for :body do %>
-  <% if calculator.eligible_for_winter_fuel_payment? %>
-    - <%= render partial: 'winter_fuel_payments.govspeak.erb' %>
-  <% end %>
+  - <%= render partial: 'winter_fuel_payments.govspeak.erb' %>
   <% if calculator.circumstances.include?('benefits') %>
     <% if calculator.eligible_for_warm_home_discount? %>
       <%= render partial: 'warm_home_discount.govspeak.erb' %>
