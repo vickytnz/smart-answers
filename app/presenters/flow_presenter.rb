@@ -15,6 +15,34 @@ class FlowPresenter
     @node_presenters = {}
   end
 
+  include ActionView::Helpers::SanitizeHelper
+
+  def chatbot_payload
+    if current_node.is_a?(OutcomePresenter)
+      if current_node.title.present?
+        outcome_text = current_node.title
+      else
+        strip_tags(current_node.body(html: true)).strip.lines.first
+      end
+
+      {
+        state: "finished",
+        title: current_node.title,
+        body: current_node.body,
+        outcome: outcome_text,
+      }
+    else
+      {
+        state: "asking",
+        question_type: current_node.class.name.underscore.gsub("_presenter", ""),
+        title: current_node.title,
+        body: strip_tags(current_node.body),
+        hint: current_node.hint,
+        questions: current_node.options.map(&:to_h)
+      }
+    end
+  end
+
   def title
     start_node.title
   end

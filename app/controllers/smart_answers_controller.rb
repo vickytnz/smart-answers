@@ -24,7 +24,8 @@ class SmartAnswersController < ApplicationController
         render json: {
           url: smart_answer_path(params[:id], 'y', @presenter.current_state.responses),
           html_fragment: html_fragment,
-          title: @presenter.current_node.title
+          title: @presenter.current_node.title,
+          chatbot_payload: @presenter.chatbot_payload,
         }
       }
       if Rails.application.config.expose_govspeak
