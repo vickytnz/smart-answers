@@ -3,3 +3,5 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 SmartAnswers::Application.initialize!
+
+Mime::Type.register "text/markdown", :govspeak
