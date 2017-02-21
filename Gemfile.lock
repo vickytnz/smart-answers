@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/alphagov/slimmer.git
-  revision: b48a65bd7a586c89071315f8a7e7f6a037ec18cc
+  revision: 8a784e691dfc22b4c637e17e2ccbfd720ccd67bd
   branch: instrumentation
   specs:
     slimmer (10.0.0)
