@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/alphagov/slimmer.git
+  revision: a967dc878eeeeeb5ef8bd3a761086b1b3591beba
+  branch: use-rails-cache
+  specs:
+    slimmer (10.0.0)
+      activesupport
+      json
+      nokogiri (>= 1.5.0, < 1.7.0)
+      null_logger
+      plek (>= 1.1.0)
+      rack
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -220,14 +234,6 @@ GEM
     simplecov-html (0.10.0)
     simplecov-rcov (0.2.3)
       simplecov (>= 0.4.1)
-    slimmer (10.0.0)
-      activesupport
-      json
-      nokogiri (>= 1.5.0, < 1.7.0)
-      null_logger
-      plek (>= 1.1.0)
-      rack
-      rest-client
     slop (3.6.0)
     sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
@@ -300,13 +306,16 @@ DEPENDENCIES
   shoulda (~> 3.5.0)
   simplecov (~> 0.10.0)
   simplecov-rcov (~> 0.2.3)
-  slimmer (~> 10.0.0)
+  slimmer!
   tilt (= 1.4.1)
   timecop
   uglifier
   uk_postcode (~> 1.0.1)
   unicorn (= 4.8.3)
   webmock (= 1.20.4)
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.13.1
