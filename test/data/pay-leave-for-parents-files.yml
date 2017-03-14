@@ -104,4 +104,7 @@ lib/smart_answer_flows/pay-leave-for-parents/questions/partner_still_working_on_
 lib/smart_answer_flows/pay-leave-for-parents/questions/partner_worked_at_least_26_weeks.govspeak.erb: d9f1d868bbc5d89545a6f56396a9dd83
 lib/smart_answer_flows/pay-leave-for-parents/questions/salary_1_66_weeks.govspeak.erb: 9e6d0e41472690daf354dbef9dee36b5
 lib/smart_answer_flows/pay-leave-for-parents/questions/two_carers.govspeak.erb: bb7640d6d75c7882c1bf1d7feb90a8ac
+lib/data/rates/pay_leave_for_parents.yml: ca9ddfb76a2bf61292abac4f901798cd
+lib/smart_answer/calculators/pay_leave_for_parents_data_query.rb: f004c425b4fc2d5d5799ea88f62df65e
+test/unit/calculators/pay_leave_for_parents_data_query_test.rb: a0b00df8dd054cff360568ecd2bd80f0
 lib/smart_answer/calculators/pay_leave_for_parents_calculator.rb: 83aec654ae82b98c797ee4bc04e62abb

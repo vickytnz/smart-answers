@@ -1,0 +1,16 @@
+---
+- start_date: 2013-04-06
+  end_date: 2014-04-05
+  statutory_parental_pay: "136.78"
+- start_date: 2014-04-06
+  end_date: 2015-04-05
+  statutory_parental_pay: "138.18"
+- start_date: 2015-04-06
+  end_date: 2016-04-05
+  statutory_parental_pay: "139.58"
+- start_date: 2016-04-06
+  end_date: 2017-04-05
+  statutory_parental_pay: "139.58"
+- start_date: 2017-04-06
+  end_date: 2018-04-05
+  statutory_parental_pay: "140.98"
