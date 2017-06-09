@@ -6,8 +6,6 @@ module SmartAnswer
       status :published
       satisfies_need "100119"
 
-      calculator = Calculators::SimplifiedExpensesCheckerCalculator.new
-
       #Q1 - vehicle expense
       multiple_choice :vehicle_expense? do
         option :car
@@ -15,8 +13,12 @@ module SmartAnswer
         option :motorcycle
         option :no_vehicle
 
-        next_node do |response|
+        on_response do |response|
+          self.calculator = Calculators::SimplifiedExpensesCheckerCalculator.new
           calculator.type_of_vehicle = response
+        end
+
+        next_node do
           question :home_or_business_premises_expense?
         end
       end
@@ -27,9 +29,12 @@ module SmartAnswer
         option :live_on_business_premises
         option :no_expense
 
+        on_response do |response|
+          calculator.business_premises_expense = response
+        end
+
         next_node do |response|
           calculator.business_premises_expense = response
-
           if response == "no_expense" &&
               calculator.type_of_vehicle == "no_vehicle"
             outcome :you_cant_use_result
@@ -52,9 +57,11 @@ module SmartAnswer
         option :used
         option :no
 
-        next_node do |response|
+        on_response do |response|
           calculator.new_or_used_vehicle = response
+        end
 
+        next_node do |response|
           if response == "new" || response == "used"
             question :how_much_expect_to_claim?
           else
@@ -73,6 +80,10 @@ module SmartAnswer
         option :capital_allowance
         option :simplified_expenses
         option :no
+
+        on_response do |response|
+          calculator.selected_allowance = response
+        end
 
         next_node do |response|
           calculator.selected_allowance = response
@@ -108,17 +119,22 @@ module SmartAnswer
         option :new
         option :used
 
-        next_node do |response|
+        on_response do |response|
           calculator.car_status_before_usage = response
+        end
+
+        next_node do
           question :how_much_expect_to_claim?
         end
       end
 
       #Q6 - claim vehicle expenses
       money_question :how_much_expect_to_claim? do
-        next_node do |response|
+        on_response do |response|
           calculator.vehicle_costs = response
+        end
 
+        next_node do
           if calculator.car?
             question :is_vehicle_green?
           elsif calculator.van? || calculator.motorcycle?
@@ -133,7 +149,7 @@ module SmartAnswer
         option :medium
         option :high
 
-        next_node do |response|
+        on_response do |response|
           case response
           when "low"
             if calculator.new_car?
@@ -144,15 +160,20 @@ module SmartAnswer
           else
             calculator.vehicle_emission = response
           end
+        end
 
+        next_node do
           question :price_of_vehicle?
         end
       end
 
       #Q8 - price of vehicle
       money_question :price_of_vehicle? do
-        next_node do |response|
+        on_response do |response|
           calculator.vehicle_price = response
+        end
+
+        next_node do
           question :vehicle_business_use_time?
         end
       end
@@ -161,9 +182,11 @@ module SmartAnswer
       value_question :vehicle_business_use_time?, parse: :to_f do
         # deduct percentage amount from [green_cost] or [dirty_cost] and store as [green_write_off] or [dirty_write_off]
 
-        next_node do |response|
+        on_response do |response|
           calculator.business_use_percent = response
+        end
 
+        next_node do |response|
           raise InvalidResponse if response.to_i > 100
 
           if calculator.car? || calculator.van?
@@ -176,9 +199,11 @@ module SmartAnswer
 
       #Q10 - miles to drive for business car_or_van
       value_question :drive_business_miles_car_van? do
-        next_node do |response|
-          calculator.business_miles_car_van = response.delete(",").to_f
+        on_response do |response|
+          calculator.business_miles_car_van = response
+        end
 
+        next_node do
           if calculator.motorcycle?
             question :drive_business_miles_motorcycle?
           elsif calculator.working_from_home?
@@ -193,9 +218,11 @@ module SmartAnswer
 
       #Q11 - miles to drive for business motorcycle
       value_question :drive_business_miles_motorcycle? do
-        next_node do |response|
-          calculator.business_miles_motorcycle = response.delete(",").to_f
+        on_response do |response|
+          calculator.business_miles_motorcycle = response
+        end
 
+        next_node do
           if calculator.working_from_home?
             question :hours_work_home?
           elsif calculator.living_on_business_premises?
@@ -208,12 +235,14 @@ module SmartAnswer
 
       #Q12 - hours for home work
       value_question :hours_work_home? do
-        next_node do |response|
-          calculator.hours_worked_home = response.to_f
+        on_response do |response|
+          calculator.hours_worked_home = response
+        end
 
-          if calculator.hours_worked_home < 1
+        next_node do |response|
+          if response.to_f < 1
             raise SmartAnswer::InvalidResponse
-          elsif calculator.hours_worked_home < 25
+          elsif response.to_f < 25
             outcome :you_cant_use_result
           else
             question :current_claim_amount_home?
@@ -223,9 +252,11 @@ module SmartAnswer
 
       #Q13 - how much do you claim?
       money_question :current_claim_amount_home? do
-        next_node do |response|
+        on_response do |response|
           calculator.home_costs = response
+        end
 
+        next_node do
           if calculator.living_on_business_premises?
             question :deduct_from_premises?
           else
@@ -236,26 +267,28 @@ module SmartAnswer
 
       #Q14 = how much do you deduct from premises for private use?
       money_question :deduct_from_premises? do
-        next_node do |response|
+        on_response do |response|
           calculator.business_premises_cost = response
+        end
+
+        next_node do
           question :people_live_on_premises?
         end
       end
 
       #Q15 - people who live on business premises?
       value_question :people_live_on_premises?, parse: :to_i do
-        next_node do |response|
+        on_response do |response|
           calculator.hours_lived_on_business_premises = response
+        end
+
+        next_node do
           outcome :you_can_use_result
         end
       end
 
       outcome :you_cant_use_result
-      outcome :you_can_use_result do
-        precalculate :calculator do
-          calculator
-        end
-      end
+      outcome :you_can_use_result
       outcome :capital_allowance_result
       outcome :you_cant_claim_capital_allowance
     end
