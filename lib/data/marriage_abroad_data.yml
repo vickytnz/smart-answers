@@ -8,7 +8,6 @@ countries_with_18_outcomes:
   - greece
   - hungary
   - iran
-  - japan
   - jordan
   - latvia
   - luxembourg
@@ -26,6 +25,7 @@ countries_with_2_outcomes:
   - france
   - ireland
   - italy
+  - japan
   - philippines
   - thailand
   - turkey
