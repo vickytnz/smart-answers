@@ -33,6 +33,11 @@ module SmartAnswer
       @name
     end
 
+    def slug(slug = nil)
+      @slug = slug unless slug.nil?
+      @slug || @name
+    end
+
     def satisfies_need(need_id)
       self.need_id = need_id
     end

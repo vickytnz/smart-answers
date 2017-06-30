@@ -4,7 +4,7 @@ class FlowRegistrationPresenter
   end
 
   def slug
-    @flow.name
+    @flow.slug
   end
 
   def need_id
