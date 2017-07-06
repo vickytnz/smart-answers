@@ -2061,14 +2061,14 @@ class MarriageAbroadTest < ActiveSupport::TestCase
       add_response 'uk'
       add_response 'partner_british'
       add_response 'opposite_sex'
-      assert_current_node :outcome_opposite_sex_marriage_in_indonesia
+      assert_current_node :outcome_marriage_abroad_in_country
     end
 
     should "bring you to the custom Indonesia os outcome for third country residents" do
       add_response 'third_country'
       add_response 'partner_british'
       add_response 'opposite_sex'
-      assert_current_node :outcome_opposite_sex_marriage_in_indonesia
+      assert_current_node :outcome_marriage_abroad_in_country
     end
   end
 
