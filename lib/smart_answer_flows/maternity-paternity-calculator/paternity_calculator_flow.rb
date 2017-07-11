@@ -142,7 +142,11 @@ module SmartAnswer
           end
 
           calculate :qualifying_week_start do
-            calculator.qualifying_week.first
+            if leave_type == "paternity_adoption"
+              calculator.adoption_matching_week_start
+            else
+              calculator.qualifying_week.first
+            end
           end
 
           next_node do |response|

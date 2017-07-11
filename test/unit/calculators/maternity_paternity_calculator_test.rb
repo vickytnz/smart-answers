@@ -255,6 +255,20 @@ module SmartAnswer::Calculators
         # 03/02/13 to 09/02/13 21/10/12 to 27/10/12 05/05/2012 18/11/2012 06/01/2013
       end
 
+      context "adoption matching week start" do
+        should "return Sunday date before the adoption matching week start date" do
+          match_date = Date.parse("2017-03-25")
+          calculator = MaternityPaternityCalculator.new(match_date)
+          assert_equal Date.parse("Sun, 19 Mar 2017"), calculator.adoption_matching_week_start
+        end
+
+        should "return the same adoption matching week start if match date is a Sunday" do
+          match_date = Date.parse("2017-03-26")
+          calculator = MaternityPaternityCalculator.new(match_date)
+          assert_equal match_date, calculator.adoption_matching_week_start
+        end
+      end
+
       context "adoption employment start tests" do
         # 27/05/12 to 02/06/12 10/12/11
         should "matched_date Monday 28th May 2012" do
